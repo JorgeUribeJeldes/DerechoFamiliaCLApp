@@ -1,0 +1,39 @@
+<ion-menu contentId="main-content" type="overlay">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item [routerLink]="'/inicio'" (click)="menu.close()">Inicio</ion-item>
+      <ion-item [routerLink]="'/conceptos'" (click)="menu.close()">Conceptos</ion-item>
+      <ion-item [routerLink]="'/preguntas-frecuentes'" (click)="menu.close()">Preguntas Frecuentes</ion-item>
+      <ion-item [routerLink]="'/contacto'" (click)="menu.close()">Contacto</ion-item>
+      <ion-item (click)="logout()">Cerrar sesión</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="main-content" class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="titulo">¡Bienvenido a Derecho de Familia CL!</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Aprende sobre tus derechos de forma clara, amigable y confiable.
+    </ion-card-content>
+  </ion-card>
+  <ion-button expand="full" routerLink="/conceptos">Ver Conceptos</ion-button>
+</ion-content>
+
+

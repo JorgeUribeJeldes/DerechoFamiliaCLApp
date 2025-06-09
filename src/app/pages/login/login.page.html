@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Ingreso</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="formularioLogin" (ngSubmit)="login()">
+    <ion-item>
+      <ion-label position="floating">Correo</ion-label>
+      <ion-input type="email" formControlName="correo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" formControlName="clave"></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" type="submit" [disabled]="!formularioLogin.valid">
+      Ingresar
+    </ion-button>
+
+    <ion-text color="danger" *ngIf="errorLogin">
+      <p class="ion-padding-top">Credenciales incorrectas. Inténtalo de nuevo.</p>
+    </ion-text>
+  </form>
+</ion-content>
