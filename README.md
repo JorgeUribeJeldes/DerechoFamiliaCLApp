@@ -3,6 +3,9 @@
 Esta aplicación móvil híbrida, desarrollada con **Ionic Angular**, tiene como propósito explicar de manera clara y accesible los principales conceptos del **Derecho de Familia Chileno**, 
 se encuentra orientada a distintos tipos de usuarios para efectos de facilitar el acceso de información de conceptos legales, en esta ocasión, del área de familia que se ve en los Tribunales de Familia en Chile.
 
+Actualmente la App se encuentra en fase temprana, más parecido a un prototipo para efectos de aprender a crear una App funcional, navegar entre las diversas páginas y, finalmente,
+utilizar correctamente los componentes aprendidos en las sesiones y materiales aportados.
+
 ## Estructura de la App
 
 - **Login**: Inicio de sesión.
