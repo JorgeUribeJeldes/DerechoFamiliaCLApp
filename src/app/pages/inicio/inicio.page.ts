@@ -18,15 +18,14 @@ import {
   IonMenuButton,
   IonButtons,
   IonList,
-  IonItem
-} from '@ionic/angular/standalone';
+  IonItem, IonIcon, IonCardSubtitle, IonGrid, IonRow, IonCol } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.page.html',
   styleUrls: ['./inicio.page.scss'],
   standalone: true,
-  imports: [
+  imports: [IonCol, IonRow, IonGrid, IonCardSubtitle, IonIcon, 
     RouterModule,
     IonMenu,
     IonMenuButton,

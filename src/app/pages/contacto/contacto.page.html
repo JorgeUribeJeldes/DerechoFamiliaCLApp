@@ -1,27 +1,56 @@
+<ion-menu contentId="main-content" type="overlay">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item [routerLink]="'/inicio'" (click)="menu.close()">Inicio</ion-item>
+      <ion-item [routerLink]="'/conceptos'" (click)="menu.close()">Conceptos</ion-item>
+      <ion-item [routerLink]="'/preguntas-frecuentes'" (click)="menu.close()">Preguntas Frecuentes</ion-item>
+      <ion-item [routerLink]="'/contacto'" (click)="menu.close()">Contacto</ion-item>
+      <ion-item (click)="logout()">Cerrar sesión</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
 <ion-header>
   <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>Contacto</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon name="log-out-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-
-  <form [formGroup]="formularioContacto" (ngSubmit)="enviarFormulario()">
-
-    <ion-item>
-      <ion-label position="floating">Nombre</ion-label>
-      <ion-input formControlName="nombre"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="email" formControlName="email"></ion-input>
-    </ion-item>
-
-    <ion-button expand="block" type="submit" [disabled]="!formularioContacto.valid">
-      Enviar
-    </ion-button>
-
-  </form>
-
+<ion-content id="main-content" class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Formulario de Contacto</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- Aquí va tu formulario de contacto -->
+      <form [formGroup]="contactForm" (ngSubmit)="enviarContacto()">
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input formControlName="nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Correo</ion-label>
+          <ion-input type="email" formControlName="correo"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Mensaje</ion-label>
+          <ion-textarea formControlName="mensaje"></ion-textarea>
+        </ion-item>
+        <ion-button expand="full" type="submit" [disabled]="contactForm.invalid">Enviar</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

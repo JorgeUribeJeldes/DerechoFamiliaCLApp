@@ -1,15 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router'; // <-- Agrega esto
+import { MenuController } from '@ionic/angular'; // <-- Y esto
 import {
+  IonMenu,
+  IonMenuButton,
+  IonButtons,
+  IonList,
+  IonItem,
   IonContent,
   IonHeader,
   IonTitle,
   IonToolbar,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardContent,
   IonLabel,
-  IonItem,
+  IonInput,
+  IonTextarea,
   IonButton,
-  IonInput
+  IonIcon
 } from '@ionic/angular/standalone';
 
 @Component({
@@ -18,41 +31,54 @@ import {
   styleUrls: ['./contacto.page.scss'],
   standalone: true,
   imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    IonButton,
+    IonMenu,
+    IonMenuButton,
+    IonButtons,
+    IonList,
+    RouterModule,
     IonItem,
-    IonLabel,
-    IonInput,
     IonContent,
     IonHeader,
     IonTitle,
-    IonToolbar
+    IonToolbar,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardContent,
+    IonLabel,
+    IonInput,
+    IonTextarea,
+    IonButton,
+    IonIcon,
+    CommonModule,
+    ReactiveFormsModule
   ]
 })
-export class ContactoPage implements OnInit {
+export class ContactoPage {
+  contactForm: FormGroup;
 
-  formularioContacto!: FormGroup;
-
-  constructor(private fb: FormBuilder) {}
-
-  ngOnInit() {
-    this.formularioContacto = this.fb.group({
+  constructor(
+    public menu: MenuController,
+    private router: Router,
+    private fb: FormBuilder
+  ) {
+    this.contactForm = this.fb.group({
       nombre: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]]
+      correo: ['', [Validators.required, Validators.email]],
+      mensaje: ['', Validators.required]
     });
   }
 
-  enviarFormulario() {
-    if (this.formularioContacto.valid) {
-      console.log('Formulario enviado:', this.formularioContacto.value);
-      //alert('Formulario enviado correctamente');
-      this.formularioContacto.reset();
-      alert('Formulario enviado correctamente');
-    } else {
-      console.log('Formulario inválido');
-    }
+  logout() {
+    this.menu.close();
+    this.router.navigate(['/inicio-sesion']);
   }
 
+  enviarContacto() {
+    if (this.contactForm.valid) {
+      // Aquí puedes manejar el envío del formulario
+      alert('Mensaje enviado correctamente');
+      this.contactForm.reset();
+    }
+  }
 }
